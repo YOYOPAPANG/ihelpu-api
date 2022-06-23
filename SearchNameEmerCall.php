@@ -1,0 +1,18 @@
+<?php 
+    //หน้านี้ไม่ใช้แล้ว XXX
+    include 'conn.php';
+
+    $SearchName = $_GET['SearchName'];
+
+    $QueryResult = $connect->query("SELECT * FROM tb_emergencycall WHERE emercall_name like '%$SearchName%'
+    or emercall_tel like '%$SearchName%' ");
+
+    $result = array();
+
+    while($fetchData = $QueryResult -> fetch_assoc()){
+        $result[] = $fetchData;
+    }
+
+    echo json_encode($result);
+
+?>
